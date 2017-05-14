@@ -1,0 +1,46 @@
+admin：
+	id:				编号
+	username：		用户名
+	userpass：		用户密码
+class：
+	c_id:			课程编号
+	c_name:			课程名称
+	t_id:			教师编号
+	c_choosemax:	开课量
+	c_mark:			学分
+	c_choosed:		已选人数
+	c_room:			开课教室
+	c_time:			上课时间
+	c_department:	开课院校
+	c_status		课程状态
+		1：开课
+		2：结课
+student：
+	s_id:			学生编号
+	s_name：			学生姓名
+	s_no：			学号
+	s_sex：			学生性别
+	s_pass:			密码
+	s_mark：			所需学分
+	s_marked:		已获学分
+	s_from：			籍贯
+	s_email：		电子邮箱
+	s_tel：			联系方式
+	s_maxclass：		最大选课量
+	s_image:		照片
+	s_department	所属院系
+student_class：
+	sc_id:			选课编号
+	c_id:			课程编号
+	s_id：			学生编号
+	sc_score:		成绩
+	sc_status:		课程状态
+
+teacher：
+	t_id：			老师编号
+	t_name：			老师姓名
+	t_password：		密码
+	t_age：			老师年龄
+	t_tel:			老师联系方式
+	t_email:		老师邮箱
+	t_type：			老师职称

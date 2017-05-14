@@ -1,0 +1,23 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+		<property name="myeclipse.connection.profile">com.mysql.jdbc.Driver</property>
+		<property name="connection.url"><![CDATA[jdbc:mysql://tyk-test-001.mysql.rds.aliyuncs.com:3306/edumanage?useUnicode=true&characterEncoding=utf8]]></property>
+		<property name="connection.username">root</property>
+		<property name="connection.password">tangYU1995</property>
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+		<property name="hibernate.hbm2ddl.auto">update</property>
+		<property name="hibernate.show_sql">true</property>
+		<property name="hibernate.format_sql">true</property>
+		
+		<mapping class="com.model.Admin"/>
+		<mapping class="com.model.Class"/>
+		<mapping class="com.model.Student"/>
+		<mapping class="com.model.StudentClass"/>
+		<mapping class="com.model.Teacher"/>
+	</session-factory>
+</hibernate-configuration>

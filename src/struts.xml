@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <constant name="struts.devMode" value="true" />
+    <constant name="struts.i18n.encoding" value="UTF-8"/>
+    <constant name="struts.custom.i18n.resources" value="action.fileUpload"></constant>
+	<package name="default" extends="struts-default">
+		<!-- 登录 -->
+		<action name="UserLogin" class="com.action.LoginAction">
+			<result name="admin">/admin/admin.jsp</result>
+			<result name="student">/student/Student.jsp</result>
+			<result name="teacher">/teacher/teacher.jsp</result>
+			<result name="input">/index.jsp</result>
+		</action>
+		<!-- 登出 -->
+		<action name="UserLayOut" class="com.action.LoginAction" method="layOut">
+			<result name="success">/index.jsp</result>
+		</action>
+		<!-- 添加课程 -->
+		<action name="AddClass" class="com.action.ClassAction" method="AddClass">
+			<result name="success" type="redirectAction">showClass</result>
+			<result name="input">/admin/AddClass.jsp</result>
+		</action>
+		<!-- 添加学生 -->
+		<action name="AddStudent" class="com.action.StudentAction" method="AddStudent">
+			<result name="success" type="redirectAction">showStudent</result>
+			<result name="input">/admin/AddStudent.jsp</result>
+		</action>
+		<!-- 添加老师 -->
+		<action name="AddTeacher" class="com.action.TeacherAction" method="AddTeacher">
+			<result name="success" type="redirectAction">showTeacher</result>
+			<result name="input">/admin/AddTeacher.jsp</result>
+		</action>
+		<!-- 查看课程  -->
+		<action name="showClass" class="com.action.ClassAction" method="findAllClass">
+			<result name="success">/admin/showClass.jsp</result>
+		</action>
+		<!-- 查看学生 -->
+		<action name="showStudent" class="com.action.StudentAction" method="findAllStu">
+			<result name="success">/admin/showStudent.jsp</result>
+		</action>
+		<!-- 查看教师 -->
+		<action name="showTeacher" class="com.action.TeacherAction" method="findAllTea">
+			<result name="success">/admin/ShowTeacher.jsp</result>
+		</action>
+		<!-- 更改管理员密码 -->
+		<action name="admin_updatePass" class="com.action.AdminAction" method="admin_UpdatePass">
+			<result name="success">/admin/showClass.jsp</result>
+			<result name="input">/admin/UpdatePass.jsp</result>
+		</action>
+		<!-- 更改学生信息 -->
+		<action name="stu_UpdateInfo" class="com.action.StudentAction" method="updateInfo">
+			<result name="success">/student/ShowInfo.jsp</result>
+			<result name="input">/student/UpdateInfo.jsp</result>
+		</action>
+		<!-- 更改学生密码 -->
+		<action name="stu_updatePass" class="com.action.StudentAction" method="UpdatePass">
+			<result name="success">/student/ShowInfo.jsp</result>
+			<result name="input">/student/UpdatePass.jsp</result>
+		</action>
+		<!-- 查看所有课程 -->
+		<action name="stu_showClass" class="com.action.ClassAction" method="findAllClass">
+			<result name="success">/student/ShowClasses.jsp</result>
+		</action>
+		<!-- 查看已选课程 -->
+		<action name="stu_showClassed" class="com.action.ClassAction" method="findChooseClass">
+			<result name="success">/student/ShowClassed.jsp</result>
+		</action>
+		<!-- 选课 -->
+		<action name="addStudentClass" class="com.action.ClassAction" method="ChooseClass">
+			<result name="success" type="redirectAction">stu_showClassed</result>
+			<result name="input" type="chain">stu_showClass</result>
+		</action>
+		<!-- 退选 -->
+		<action name="delStudentClass" class="com.action.ClassAction" method="delStudentClass">
+			<result name="success" type="redirectAction">stu_showClassed</result>
+			<result name="input">/student/ShowClassed.jsp</result>
+		</action>
+		<!-- 修改教师信息 -->
+		<action name="tea_UpdateInfo" class="com.action.TeacherAction" method="updateInfo">
+			<result name="success">/teacher/ShowInfo.jsp</result>
+			<result name="input">/teacher/UpdateInfo.jsp</result>
+		</action>
+		<!-- 修改教师密码 -->
+		<action name="tea_updatePass" class="com.action.TeacherAction" method="UpdatePass">
+			<result name="success">/teacher/ShowInfo.jsp</result>
+			<result name="input">/teacher/UpdatePass.jsp</result>
+		</action>
+		<!-- 查看本学期课程 -->
+		<action name="tea_showClass" class="com.action.ClassAction" method="findClassByTid">
+			<result name="success">/teacher/ShowClass.jsp</result>
+		</action>
+		<!-- 查看已结束课程 -->	
+		<action name="tea_showClassed" class="com.action.ClassAction" method="findClassedByTid">
+			<result name="success">/teacher/ShowClassed.jsp</result>
+		</action>
+		<!-- 查看课程选课情况 -->
+		<action name="ClassInfo" class="com.action.ClassAction" method="ClassInfo">
+			<result name="success">/teacher/ShowClassInfo.jsp</result>
+		</action>
+		<!-- 查看结束课程选课情况 -->
+		<action name="ClassedInfo" class="com.action.ClassAction" method="ClassInfo">
+			<result name="success">/teacher/ShowClassedInfo.jsp</result>
+		</action>
+		<!-- 录入成绩 -->
+		<action name="tea_UpdateStuCla" class="com.action.ClassAction" method="tea_UpdateStuCla">
+			<result name="success" type="redirectAction">tea_showClassed</result>
+		</action>
+	</package>
+</struts>    
