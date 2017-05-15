@@ -1,5 +1,6 @@
 package com.action;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
@@ -18,10 +19,11 @@ public class LoginAction extends ActionSupport implements SessionAware{
 	private String password;
 	private String person;
 	private String msg;
-	Map<String,Object> session;
-	AdminService as=new AdminService();
-	StudentService ss=new StudentService();
-	TeacherService ts=new TeacherService();
+	private Map<String,Object> session;
+	private AdminService as=new AdminService();
+	private StudentService ss=new StudentService();
+	private TeacherService ts=new TeacherService();
+	private ArrayList<Teacher> teachers;
 	
 	public String getUsername() {
 		return username;
@@ -82,6 +84,8 @@ public class LoginAction extends ActionSupport implements SessionAware{
 				setMsg("该用户不存在,请重新输入");
 				return "input";
 			}else if(admin.getUserpass().equals(password)){
+				this.teachers=ts.findAllTea();
+				session.put("teachers", teachers);
 				session.put("person", "admin");
 				session.put("admin", admin);
 				return "admin";

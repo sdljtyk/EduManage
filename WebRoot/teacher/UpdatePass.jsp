@@ -21,11 +21,45 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
 	<link rel="stylesheet" type="text/css" href="CSS/login.css">
+		<script language="javascript">
+	function sure() {
+
+		var flag = confirm("你确定要修改密码吗");
+		if (flag) {
+			return true;
+		} else {
+			return false;
+		}
+
+	}
+	function myCheck()
+    {
+      for(var i=0;i<document.form1.elements.length-1;i++)
+      {
+       if(document.form1.elements[i].value=="")
+       {
+         alert("当前表单不能有空项");
+         document.form1.elements[i].focus();
+         return false;
+       }
+      }
+      var pd1=document.getElementById("newpass");
+      var pd2=document.getElementById("surepass");
+      if(pd1.value!=pd2.value)
+      {
+      	alert("两次密码不一致，请重新输入！")
+      	return false;
+      }
+      return true;
+      
+    }
+</script>
   </head>
   
   <body>
     <div align="center" >
-		<form action="tea_updatePass.action" method="post" class="my_form">
+		<form action="tea_updatePass.action" method="post" name="form1" onSubmit="return myCheck()"
+			onSubmit="return sure()"  enctype="multipart/form-data" class="my_form">
 			<table width="470"  cellpadding="1" >
 				<tr>
 					<td height="25" colspan="2">

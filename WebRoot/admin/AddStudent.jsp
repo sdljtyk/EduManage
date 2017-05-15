@@ -31,11 +31,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		}
 
 	}
+	function chkblk(ele)
+	{
+		//去掉所有空格后再判断是否为空
+		if (ele.value.replace(/(^\s*)|(\s*$)/g, "")=="")
+		alert("Input is blank");
+	}
+	
+	function myCheck()
+    {
+      for(var i=0;i<document.form1.elements.length-1;i++)
+      {
+       if(document.form1.elements[i].value=="")
+       {
+         alert("当前表单不能有空项");
+         document.form1.elements[i].focus();
+         return false;
+       }
+      }
+      return true;
+    }
 </script>
 </head>
   <body>
   	<div align="center">
-		<form method="post" action="AddStudent.action" onsubmit="return sure();" enctype="multipart/form-data"
+		<form method="post" action="AddStudent.action" name="form1" onSubmit="return myCheck()"
+			onSubmit="return sure()" enctype="multipart/form-data"
 			class="my_form">
 			<table width="400" height="100% ">
 				<tr>
@@ -45,13 +66,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</tr>
 				<tr>
 					<td height="30"><strong>学号</strong></td>
-					<td><label> <input class="form-control" type="text"
+					<td><label> <input class="form-control" type="text" onmouseout="chkblk(this)"
 							name="student.SNo">
 					</label></td>
 				</tr>
 				<tr>
 					<td height="30"><strong>姓名</strong></td>
-					<td><label> <input class="form-control" type="text"
+					<td><label> <input class="form-control" type="text" onmouseout="chkblk(this)"
 							name="student.SName">
 					</label></td>
 				</tr>
@@ -65,7 +86,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<td height="30"><strong>院系</strong></td>
 					<td><label> <select style="width: 221px;height:30"
 							id="department" name="student.SDepartment">
-								<option value="------">------请选择------</option>
 								<option value="信息与电气工程学院">信息与电气学院</option>
 								<option value="数学院">数学院</option>
 								<option value="土木学院">土木学院</option>
@@ -77,25 +97,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 				<tr>
 					<td height="30"><strong>籍贯</strong></td>
-					<td><label> <input class="form-control" type="text"
+					<td><label> <input class="form-control" type="text" onmouseout="chkblk(this)"
 							name="student.SFrom">
 					</label></td>
 				</tr>
 				<tr>
-					<td height="30"><strong>所需学分</strong></td>
-					<td><label> <input class="form-control" type="text"
+					<td height="30"><strong>所需学分</strong></td> 
+					<td><label> <input class="form-control" type="text" onmouseout="chkblk(this)"
 							name="student.SMark" />
 					</label></td>
 				</tr>
 				<tr>
 					<td height="30"><strong>已获学分</strong></td>
-					<td><label> <input class="form-control" type="text"
+					<td><label> <input class="form-control" type="text" onmouseout="chkblk(this)"
 							name="student.SMarked" />
 					</label></td>
 				</tr>
 				<tr>
 					<td height="30"><strong>电子邮件</strong></td>
-					<td><label> <input class="form-control" type="text"
+					<td><label> <input class="form-control" type="text" onmouseout="chkblk(this)"
 							name="student.SEmail">
 					</label></td>
 				</tr>
@@ -108,7 +128,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<tr>
 					<td height="30"><strong>联系方式</strong></td>
 					<td><label> 
-					<input class="form-control"  type="text" name="student.STel"   >
+					<input class="form-control"  type="text" name="student.STel"  onmouseout="chkblk(this)" >
 					</label></td>
 				</tr>
 				<tr>

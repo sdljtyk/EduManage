@@ -27,6 +27,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
     <table border="2" cellpadding="0" cellspacing="0" 
 		width="98%" align="center"  class="my_form">
+		<tr align="right">
+			<td colspan="8">
+				<input type="text" name="likeName" >
+			</td>
+			<td></td>
+		</tr>
 		<tr>
 			<th height="30">课程名称</th>
 			<th height="30">教师编号</th>

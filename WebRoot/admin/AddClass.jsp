@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -31,16 +32,37 @@
 		} else {
 			return false;
 		}
-
 	}
+	
+	function chkblk(ele)
+	{
+		//去掉所有空格后再判断是否为空
+		if (ele.value.replace(/(^\s*)|(\s*$)/g, "")=="")
+		alert("Input is blank");
+	}
+	
+	function myCheck()
+    {
+      for(var i=0;i<document.form1.elements.length-1;i++)
+      {
+       if(document.form1.elements[i].value=="")
+       {
+         alert("当前表单不能有空项");
+         document.form1.elements[i].focus();
+         return false;
+       }
+      }
+      return true;
+      
+    }
+	
 </script>
 </head>
 
 <body>
 	<div align="center">
-		<form method="post" action="AddClass.action"
-			onsubmit="return sure();" enctype="multipart/form-data"
-			class="my_form">
+		<form method="post" action="AddClass.action" name="form1" onSubmit="return myCheck()"
+			onSubmit="return sure()"  enctype="multipart/form-data" class="my_form">
 			<table width="400" height="100% ">
 				<tr>
 					<td height="25" colspan="2"><div align="center">
@@ -49,39 +71,41 @@
 				</tr>
 				<tr>
 					<td height="30"><strong>课程名称</strong></td>
-					<td><label> <input class="form-control" type="text"
+					<td><label> <input class="form-control" type="text" onmouseout="chkblk(this)"
 							name="class1.CName">
 					</label></td>
 				</tr>
 				<tr>
 					<td height="30"><strong>任课教师</strong></td>
-					<td><select style="width: 221px;height:30" id="tid"
+					<td><select style="width: 221px;height:30" id="tid" onmouseout="chkblk(this)" 
 						name="class1.TId">
-							<option value="123">123</option>
+						<s:iterator value="#session.teachers" id="#session.teachers">
+							<option value="<s:property value="TId" />"><s:property value="TName" /></option>
+						</s:iterator>
 					</select></td>
 				</tr>
 				<tr>
 					<td height="30"><strong>最大人数</strong></td>
-					<td><label> <input class="form-control" type="text"
-							name="class1.CChoosemax">
+					<td><label> <input class="form-control" type="text"  onmouseout="chkblk(this)"
+						name="class1.CChoosemax">
 					</label></td>
 				</tr>
 
 				<tr>
 					<td height="30"><strong>上课教室</strong></td>
-					<td><label> <input class="form-control" type="text"
-							name="class1.CRoom">
+					<td><label> <input class="form-control" type="text" onmouseout="chkblk(this)"
+						name="class1.CRoom">
 					</label></td>
 				</tr>
 				<tr>
 					<td height="30"><strong>上课时间</strong></td>
-					<td><label> <input class="form-control" type="text"
+					<td><label> <input class="form-control" type="text" onmouseout="chkblk(this)"
 							name="class1.CTime" />
 					</label></td>
 				</tr>
 				<tr>
 					<td height="30"><strong>课程学分</strong></td>
-					<td><label> <input class="form-control" type="text"
+					<td><label> <input class="form-control" type="text" onmouseout="chkblk(this)" 
 							name="class1.CMark">
 					</label></td>
 				</tr>
@@ -89,7 +113,6 @@
 					<td height="30"><strong>开课院系</strong></td>
 					<td><label> <select style="width: 221px;height:30"
 							id="department" name="class1.CDepartment">
-								<option value="------">------请选择------</option>
 								<option value="信息与电气工程学院">信息与电气学院</option>
 								<option value="数学院">数学院</option>
 								<option value="土木学院">土木学院</option>
@@ -102,7 +125,7 @@
 					<td height="25" colspan="2">
 						<div align="center">
 							<input class="button button-pill button-primary" type="submit"
-								name="Submit" value="提交" /> <a
+								name="Submit" value="提交"/> <a
 								class="button button-pill button-primary"
 								href="showClass.action">返回</a>
 						</div>

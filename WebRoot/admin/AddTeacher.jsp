@@ -31,12 +31,33 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		}
 
 	}
+	function chkblk(ele)
+	{
+		//去掉所有空格后再判断是否为空
+		if (ele.value.replace(/(^\s*)|(\s*$)/g, "")=="")
+		alert("Input is blank");
+	}
+	
+	function myCheck()
+    {
+      for(var i=0;i<document.form1.elements.length-1;i++)
+      {
+       if(document.form1.elements[i].value=="")
+       {
+         alert("当前表单不能有空项");
+         document.form1.elements[i].focus();
+         return false;
+       }
+      }
+      return true;
+      
+    }
 </script>
 </head>
   
   <body>
   	<div align="center">
-		<form method="post" action="AddTeacher.action" onsubmit="return sure();" enctype="multipart/form-data"
+		<form method="post" action="AddTeacher.action" name="form1" onSubmit="return myCheck()" onsubmit="return sure();" enctype="multipart/form-data"
 			class="my_form">
 			<table width="400" height="100% ">
 				<tr>
@@ -46,35 +67,35 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</tr>
 				<tr>
 					<td height="30"><strong>姓名</strong></td>
-					<td><label> <input class="form-control" type="text"
+					<td><label> <input class="form-control" type="text" onmouseout="chkblk(this)"
 							name="teacher.TName">
 					</label></td>
 				</tr>
 				<tr>
 					<td height="30"><strong>年龄</strong></td>
-					<td><label> <input class="form-control" type="text"
+					<td><label> <input class="form-control" type="text" onmouseout="chkblk(this)"
 							name="teacher.TAge">
 					</label></td>
 				</tr>
 				<tr>
 					<td height="30"><strong>联系方式</strong></td>
-					<td><label> <input class="form-control" type="text"
+					<td><label> <input class="form-control" type="text" onmouseout="chkblk(this)"
 							name="teacher.TTel">
 					</label></td>
 				</tr>
 				<tr>
 					<td height="30"><strong>电子邮件</strong></td>
-					<td><label> <input class="form-control" type="text"
+					<td><label> <input class="form-control" type="text" onmouseout="chkblk(this)"
 							name="teacher.TEmail">
 					</label></td>
 				</tr>
 				<tr>
 					<td height="30"><strong>教师类型</strong></td>
 					<td><label> <select style="width: 221px;height:30" name="teacher.TType">
-								<option value="------">------请选择------</option>
-								<option value="普通教师">普通教师</option>
-								<option value="中级教师">中级教师</option>
-								<option value="高级教师">高级教师</option>
+								<option value="助教">助教</option>
+								<option value="讲师">讲师</option>
+								<option value="副教授">副教授</option>
+								<option value="教授">教授</option>
 						</select>
 					</label></td>
 				</tr>
