@@ -44,4 +44,11 @@ public class ClassService {
 	public ArrayList<StudentClass> findStuClaByCId(Integer cId) {
 		return cd.findStuClaByCId(cId);
 	}
+	public void UpdateStuCla(StudentClass temp1) {
+		cd.UpdateStuCla(temp1);
+	}
+	public boolean delClass(Class class1) {
+		Class temp = cd.findByID(class1.getCId());
+		return cd.delClass(temp);
+	}
 }

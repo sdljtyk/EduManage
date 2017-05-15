@@ -9,6 +9,7 @@ import org.hibernate.Transaction;
 
 import com.model.Class;
 import com.model.Student;
+import com.model.Teacher;
 import com.util.HibernateSessionFactory;
 
 @SuppressWarnings("deprecation")
@@ -104,6 +105,23 @@ public class StudentDao {
 		}finally{
 			session.close();
 		}
+	}
+	
+	public boolean delStudent(Student s) {
+
+		Session session = HibernateSessionFactory.getSession();
+		Transaction tc = session.beginTransaction();
+		try {
+			session.delete(s);
+			tc.commit();
+			return true;
+		} catch (Exception e) {
+			System.out.println("StudentDao中delStudent异常");
+			return false;
+		} finally {
+			session.close();
+		}
+
 	}
 
 }

@@ -27,7 +27,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div align="center" >
 		<form method="post" class="my_form">
 			<table border="2" cellpadding="0" cellspacing="0" 
-				width="98%" align="center">
+				width="98%" align="center" class="my_form">
 			<tr>
 					<th height="30">课程编号</th>
 					<th height="30">学号</th>

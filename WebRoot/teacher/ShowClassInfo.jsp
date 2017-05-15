@@ -27,7 +27,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div align="center" >
 		<form action="tea_UpdateStuCla.action" method="post" class="my_form">
 			<table border="2" cellpadding="0" cellspacing="0" 
-				width="98%" align="center">
+				width="98%" align="center" class="my_form">
 			<tr>
 					<th height="30">课程编号</th>
 					<th height="30">学号</th>
@@ -40,7 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</tr>
 			<s:iterator value="stuclasses" id="stuclasses" status="L">
 				<tr>
-					<td align="center"><s:property value="CId" /></td>
+					<td align="center"><s:property value="CId"/></td>
 					<td align="center"><s:property value="students[#L.index].SNo" /></td>
 					<td align="center"><s:property value="students[#L.index].SName" /></td>
 					<td align="center"><s:property value="students[#L.index].SSex" /></td>
@@ -48,7 +48,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<td align="center"><s:property value="students[#L.index].SEmail" /></td>
 					<td align="center"><s:property value="students[#L.index].SDepartment" /></td>
 					<td align="center">
-						<input size="20" class="form-control" type="text" name="scScore"/>
+						<input size="20" class="form-control" type="text" name="Scorees"/>
 					</td>
 				</tr>
 			</s:iterator>

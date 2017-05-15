@@ -23,5 +23,9 @@ public class TeacherService {
 	public boolean updateInfo(Teacher teacher) {
 		return td.updateInfo(teacher);
 	}
+	public boolean delTeacher(Teacher teacher) {
+		Teacher temp=td.findById(teacher.getTId());
+		return td.delTeacher(temp);
+	}
 
 }

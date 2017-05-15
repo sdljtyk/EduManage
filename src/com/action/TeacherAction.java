@@ -107,4 +107,12 @@ public class TeacherAction extends ActionSupport implements SessionAware{
 		setMsg("原密码不正确！");
 		return "input";
 	}
+	
+	public String delTeacher()
+	{
+		if(ts.delTeacher(teacher))
+			return "success";
+		else
+			return "input";
+	}
 }

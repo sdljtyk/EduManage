@@ -25,5 +25,9 @@ public class StudentService {
 	public Student findById(Integer sId) {
 		return sd.findById(sId);
 	}
+	public boolean delStudent(Student student) {
+		Student temp=sd.findById(student.getSId());
+		return sd.delStudent(temp);
+	}
 
 }

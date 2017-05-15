@@ -152,4 +152,12 @@ public class StudentAction extends ActionSupport implements SessionAware{
 		
 	}
 	
+	public String delStudent()
+	{
+		if(ss.delStudent(student))
+			return "success";
+		else
+			return "input";
+	}
+	
 }

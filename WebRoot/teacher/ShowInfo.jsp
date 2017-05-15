@@ -27,7 +27,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
     	<div align="center">
 		<form method="post" style="height: 100%;" class="my_form">
-			<table width="470"  cellpadding="1" >
+			<table width="470"  cellpadding="1"    >
 				<tr>
 					<td height="20" colspan="2">
 						<div align="center">

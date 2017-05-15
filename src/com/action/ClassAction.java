@@ -27,6 +27,8 @@ public class ClassAction extends ActionSupport implements SessionAware{
 	private Map<String,Object> session;
 	private StudentService ss=new StudentService();
 	private String msg;
+	private int[] Scorees;
+	private int[] tIds;
 	@Override
 	public void setSession(Map<String, Object> arg0) {
 		this.session=arg0;
@@ -60,6 +62,15 @@ public class ClassAction extends ActionSupport implements SessionAware{
 	public void setStudents(ArrayList<Student> students) {
 		this.students = students;
 	}
+	
+
+	public int[] gettIds() {
+		return tIds;
+	}
+
+	public void settIds(int[] tIds) {
+		this.tIds = tIds;
+	}
 
 	public Class getClass1() {
 		return class1;
@@ -84,6 +95,17 @@ public class ClassAction extends ActionSupport implements SessionAware{
 
 	public void setMsg(String msg) {
 		this.msg = msg;
+	}
+
+	
+	
+
+	public int[] getScorees() {
+		return Scorees;
+	}
+
+	public void setScorees(int[] scorees) {
+		Scorees = scorees;
 	}
 
 	public String AddClass()
@@ -194,20 +216,30 @@ public class ClassAction extends ActionSupport implements SessionAware{
 			c=ss.findById(sc.getSId());
 			students.add(c);
 		}
+		session.put("stuclasses",stuclasses);
 		return "success";
 	}
 	public String tea_UpdateStuCla()
 	{
-		System.out.println("+++++++++++++++++++++");
-		for(int i=0;i<stuclasses.size();i++)
+		ArrayList<StudentClass> temp=(ArrayList<StudentClass>)session.get("stuclasses");
+		int Cid=temp.get(0).getCId();
+		Class temp_c=cs.findByID(Cid);
+		for(int i=0;i<temp.size();i++)
 		{
-			System.out.println("-------------------------");
-			System.out.println("SCid:"+stuclasses.get(i).getScId());
-			System.out.println("CId:"+stuclasses.get(i).getCId());
-			System.out.println("SId:"+stuclasses.get(i).getSId());
-			System.out.println("ScScore:"+stuclasses.get(i).getScScore());
-			
+			StudentClass temp1=temp.get(i);
+			temp1.setScScore(Scorees[i]);
+			cs.UpdateStuCla(temp1);
 		}
+		temp_c.setCStatus(2);
+		cs.UpdateInfo(temp_c);
 		return "success";
+	}
+	
+	public String delClass()
+	{
+		if(cs.delClass(class1))
+			return "success";
+		else
+			return "input";
 	}
 }

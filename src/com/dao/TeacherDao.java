@@ -7,6 +7,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import com.model.Class;
 import com.model.Student;
 import com.model.Teacher;
 import com.util.HibernateSessionFactory;
@@ -82,6 +83,37 @@ public class TeacherDao {
 		} catch (Exception e) {
 			System.out.println("TeacherDao中updateInfo异常");
 			return false;
+		}finally{
+			session.close();
+		}
+	}
+
+	public boolean delTeacher(Teacher t) {
+
+		Session session = HibernateSessionFactory.getSession();
+		Transaction tc = session.beginTransaction();
+		try {
+			session.delete(t);
+			tc.commit();
+			return true;
+		} catch (Exception e) {
+			System.out.println("TeacherDao中delTeacher异常");
+			return false;
+		} finally {
+			session.close();
+		}
+
+	}
+	public Teacher findById(Integer tId) {
+		Session session=HibernateSessionFactory.getSession();
+		Transaction tc=session.beginTransaction();
+		try{
+			Teacher t=(Teacher)session.get(Teacher.class, tId);
+			tc.commit();
+			return t;
+		}catch(Exception e){
+			System.out.println("TeacherDao中findById异常");
+			return null;
 		}finally{
 			session.close();
 		}

@@ -212,4 +212,34 @@ public class ClassDao {
 			session.close();
 		}
 	}
+
+	public boolean UpdateStuCla(StudentClass temp1) {
+		Session session= HibernateSessionFactory.getSession();
+		Transaction tx=session.beginTransaction();
+		try {
+			session.update(temp1);
+			tx.commit();
+			return true;
+		} catch (Exception e) {
+			System.out.println("ClassDao中UpdateStuCla异常");
+			return false;
+		}finally{
+			session.close();
+		}
+	}
+
+	public boolean delClass(Class temp) {
+		Session session=HibernateSessionFactory.getSession();
+		Transaction tc=session.beginTransaction();
+		try{
+			session.delete(temp);
+			tc.commit();
+			return true;
+		}catch(Exception e){
+			System.out.println("ClassDao中delClass异常");
+			return false;
+		}finally{
+			session.close();
+		}
+	}
 }
