@@ -26,6 +26,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
+  <form action="stu_findLike.action" class="my_form">
+  	<table>
+  		<tr align="right">
+			<td colspan="8">
+				学生姓名：
+				<input type="text" name="likeName" >
+			</td>
+			<td align="center"><input type="submit" value="查询">
+		</tr>
+  	</table>
+  </form>
     <table border="2" cellpadding="0" cellspacing="0" 
 		width="98%" align="center" class="my_form">
 		<tr>
@@ -45,7 +56,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 		<s:iterator value="stu" id="stu">
 			<tr>
-				<td><img alt="touxiang" src="uploads/<s:property value="SImage" />" height="40">
+				<td><s:if test="SImage==null">无图片</s:if>
+					<s:else>
+						<img alt="touxiang" src="uploads/<s:property value="SImage" />" height="40">
+					</s:else>
+				</td>
 				<td align="center"><s:property value="SNo" /></td>
 				<td align="center"><s:property value="SName" /></td>
 				<td align="center"><s:property value="SSex" /></td>

@@ -51,4 +51,7 @@ public class ClassService {
 		Class temp = cd.findByID(class1.getCId());
 		return cd.delClass(temp);
 	}
+	public ArrayList<Class> cla_findLike(String likeName) {
+		return cd.cla_findLike(likeName);
+	}
 }

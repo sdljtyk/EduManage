@@ -25,14 +25,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    <table border="2" cellpadding="0" cellspacing="0" 
-		width="98%" align="center"  class="my_form">
-		<tr align="right">
+  <form action="cla_findLike.action" class="my_form">
+  	<table>
+  		<tr align="right">
 			<td colspan="8">
+				课程名：
 				<input type="text" name="likeName" >
 			</td>
-			<td></td>
+			<td align="center"><input type="submit" value="查询">
 		</tr>
+  	</table>
+  </form>
+    <table border="2" cellpadding="0" cellspacing="0" 
+		width="98%" align="center"  class="my_form">
 		<tr>
 			<th height="30">课程名称</th>
 			<th height="30">教师编号</th>

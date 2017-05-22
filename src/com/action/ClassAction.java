@@ -29,6 +29,7 @@ public class ClassAction extends ActionSupport implements SessionAware{
 	private String msg;
 	private int[] Scorees;
 	private int[] tIds;
+	private String likeName;
 	@Override
 	public void setSession(Map<String, Object> arg0) {
 		this.session=arg0;
@@ -78,6 +79,15 @@ public class ClassAction extends ActionSupport implements SessionAware{
 
 	public void setClass1(Class class1) {
 		this.class1 = class1;
+	}
+	
+
+	public String getLikeName() {
+		return likeName;
+	}
+
+	public void setLikeName(String likeName) {
+		this.likeName = likeName;
 	}
 
 	public ArrayList<StudentClass> getStuclasses() {
@@ -241,5 +251,13 @@ public class ClassAction extends ActionSupport implements SessionAware{
 			return "success";
 		else
 			return "input";
+	}
+	
+	public String cla_findLike()
+	{
+		System.out.println(likeName);
+		this.classes=cs.cla_findLike(likeName);
+		return "success";
+		
 	}
 }

@@ -118,5 +118,20 @@ public class TeacherDao {
 			session.close();
 		}
 	}
-
+	public ArrayList<Teacher> tea_findLike(String likeName) {
+		Query query;
+		Session session=HibernateSessionFactory.getSession();
+		String hql="from Teacher as t where t.TName like :sname"; 
+		try {
+	        query=session.createQuery(hql);
+	        query.setString("sname", "%"+likeName+"%");  
+	        List<Teacher> list=query.list();
+	        Transaction transaction=session.beginTransaction();
+	        transaction.commit();
+	        return (ArrayList<Teacher>)list;
+		} catch (Exception e) {
+			System.out.println("TeacherDao中tea_findLike异常");
+			return null;
+		}
+	}
 }

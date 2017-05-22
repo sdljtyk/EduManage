@@ -27,5 +27,8 @@ public class TeacherService {
 		Teacher temp=td.findById(teacher.getTId());
 		return td.delTeacher(temp);
 	}
+	public ArrayList<Teacher> tea_findLike(String likeName) {
+		return td.tea_findLike(likeName);
+	}
 
 }

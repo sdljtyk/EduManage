@@ -23,7 +23,7 @@ public class StudentAction extends ActionSupport implements SessionAware{
 	private String fileFileName;
 	private ArrayList<Student> stu;
 	private Map<String,Object> session;
-
+	private String likeName;
 	private StudentService ss=new StudentService();
 	
 	
@@ -69,6 +69,14 @@ public class StudentAction extends ActionSupport implements SessionAware{
 	}
 
 	
+	public String getLikeName() {
+		return likeName;
+	}
+
+	public void setLikeName(String likeName) {
+		this.likeName = likeName;
+	}
+
 	public String getMsg() {
 		return msg;
 	}
@@ -158,6 +166,13 @@ public class StudentAction extends ActionSupport implements SessionAware{
 			return "success";
 		else
 			return "input";
+	}
+	
+	public String stu_findLike()
+	{
+		this.stu=ss.stu_findLike(likeName);
+		System.out.println(stu.size());
+		return "success";
 	}
 	
 }

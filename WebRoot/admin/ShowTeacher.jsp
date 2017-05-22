@@ -26,6 +26,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
+  <form action="tea_findLike.action" class="my_form">
+  	<table>
+  		<tr align="right">
+			<td colspan="8">
+				老师姓名：
+				<input type="text" name="likeName" >
+			</td>
+			<td align="center"><input type="submit" value="查询">
+		</tr>
+  	</table>
+  </form>
     <table border="2" cellpadding="0" cellspacing="0" 
 		width="98%" align="center"  class="my_form">
 		<tr>

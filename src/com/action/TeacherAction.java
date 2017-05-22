@@ -17,6 +17,7 @@ public class TeacherAction extends ActionSupport implements SessionAware{
 	private Map<String,Object> session;
 	private String msg;
 	private String newpass;
+	private String likeName;
 	
 	public Teacher getTeacher() {
 		return teacher;
@@ -44,6 +45,16 @@ public class TeacherAction extends ActionSupport implements SessionAware{
 
 	public void setMsg(String msg) {
 		this.msg = msg;
+	}
+
+
+	public String getLikeName() {
+		return likeName;
+	}
+
+
+	public void setLikeName(String likeName) {
+		this.likeName = likeName;
 	}
 
 
@@ -79,6 +90,12 @@ public class TeacherAction extends ActionSupport implements SessionAware{
 	public String findAllTea()
 	{
 		this.tea=ts.findAllTea();
+		return "success";
+	}
+	
+	public String tea_findLike()
+	{
+		this.tea=ts.tea_findLike(likeName);
 		return "success";
 	}
 	

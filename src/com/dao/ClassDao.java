@@ -242,4 +242,20 @@ public class ClassDao {
 			session.close();
 		}
 	}
+	public ArrayList<Class> cla_findLike(String likeName) {
+		Query query;
+		Session session=HibernateSessionFactory.getSession();
+		String hql="from Class as c where c.CName like :sname"; 
+		try {
+	        query=session.createQuery(hql);
+	        query.setString("sname", "%"+likeName+"%");  
+	        List<Class> list=query.list();
+	        Transaction transaction=session.beginTransaction();
+	        transaction.commit();
+	        return (ArrayList<Class>)list;
+		} catch (Exception e) {
+			System.out.println("ClassDao中cla_findLike异常");
+			return null;
+		}
+	}
 }

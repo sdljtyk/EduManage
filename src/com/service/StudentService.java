@@ -29,5 +29,8 @@ public class StudentService {
 		Student temp=sd.findById(student.getSId());
 		return sd.delStudent(temp);
 	}
+	public ArrayList<Student> stu_findLike(String likeName) {
+		return sd.stu_findLike(likeName);
+	}
 
 }

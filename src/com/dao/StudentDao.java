@@ -121,7 +121,24 @@ public class StudentDao {
 		} finally {
 			session.close();
 		}
-
+	}
+	
+	public ArrayList<Student> stu_findLike(String likeName) {
+		System.out.println(likeName);
+		Query query;
+		Session session=HibernateSessionFactory.getSession();
+		String hql="from Student as s where s.SName like :sname"; 
+		try {
+	        query=session.createQuery(hql);
+	        query.setString("sname", "%"+likeName+"%");  
+	        List<Student> list=query.list();
+	        Transaction transaction=session.beginTransaction();
+	        transaction.commit();
+	        return (ArrayList<Student>)list;
+		} catch (Exception e) {
+			System.out.println("StudentDao中stu_findLike异常");
+			return null;
+		}
 	}
 
 }

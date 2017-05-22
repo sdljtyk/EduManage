@@ -44,6 +44,18 @@
 		<action name="showTeacher" class="com.action.TeacherAction" method="findAllTea">
 			<result name="success">/admin/ShowTeacher.jsp</result>
 		</action>
+		<!-- 模糊查询教师 -->
+		<action name="tea_findLike" class="com.action.TeacherAction" method="tea_findLike">
+			<result name="success">/admin/ShowTeacher.jsp</result>
+		</action>
+		<!-- 模糊查询学生 -->
+		<action name="stu_findLike" class="com.action.StudentAction" method="stu_findLike">
+			<result name="success">/admin/showStudent.jsp</result>
+		</action>
+		<!-- 模糊查询课程 -->
+		<action name="cla_findLike" class="com.action.ClassAction" method="cla_findLike">
+			<result name="success">/admin/showClass.jsp</result>
+		</action>
 		<!-- 删除课程 -->
 		<action name="delClass" class="com.action.ClassAction" method="delClass">
 			<result name="success" type="redirectAction">showClass</result>
